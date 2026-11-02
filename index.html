@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>조준원 포트폴리오</title>
+<meta name="description" content="데이터센터 설비 운영 엔지니어 조준원. 수냉식 서버룸, 프리쿨링 냉방, 자동제어 운영 9년.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* 레이아웃: A4 한 장 이력서를 웹으로 옮긴 단일 칼럼. 왼쪽 좁은 라벨 칸(연도, 구분)과 오른쪽 본문 칸 */
+:root{
+  --bg:#eef1f3; --paper:#ffffff; --ink:#1b2126; --muted:#5b6670; --faint:#8a949c; --line:#dfe4e8;
+  --accent:#245c70; --accent-soft:#e8f0f3;
+  --sans:"IBM Plex Sans KR","Noto Sans KR","Noto Sans CJK KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --mono:"IBM Plex Mono","Noto Sans Mono CJK KR",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root{--bg:#121618;--paper:#1a1f22;--ink:#e2e6e9;--muted:#a0aab2;--faint:#7c868e;--line:#2b3338;--accent:#86b9c9;--accent-soft:#1f3038;color-scheme:dark}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.72;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 64px;word-break:keep-all;overflow-wrap:anywhere}
+.paper{max-width:880px;margin:0 auto;background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:52px clamp(20px,5.5vw,60px)}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{text-wrap:balance;line-height:1.35}
+
+/* 머리말 */
+.head{display:grid;grid-template-columns:120px minmax(0,1fr);gap:28px;align-items:start}
+.photo{width:120px;aspect-ratio:3/4;object-fit:cover;border:1px solid var(--line);border-radius:2px;display:block;max-width:100%}
+h1{font-size:30px;font-weight:700;letter-spacing:-.01em}
+.role{font-size:16.5px;color:var(--muted);margin-top:4px}
+.lead{margin-top:16px;max-width:60ch}
+.contact{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:16px;font-size:13.5px;color:var(--muted)}
+.contact b{font-weight:500;color:var(--faint);margin-right:6px;font-size:12px}
+.contact span{font-family:var(--mono);color:var(--ink);font-size:13.5px}
+
+/* 명판: 설비 명판처럼 칸을 나눈 요약 */
+.plate{margin-top:30px;border:1px solid var(--ink);border-radius:2px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.plate div{padding:12px 16px;border-left:1px solid var(--line)}
+.plate div:first-child{border-left:0}
+.plate small{display:block;font-size:11.5px;color:var(--muted);letter-spacing:.02em}
+.plate strong{display:block;font-size:17px;font-weight:600;margin-top:2px;font-variant-numeric:tabular-nums}
+
+section{margin-top:46px}
+h2{font-size:15px;font-weight:700;color:var(--accent);padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:22px}
+h3{font-size:16.5px;font-weight:600}
+.row{display:grid;grid-template-columns:132px minmax(0,1fr);gap:6px 24px}
+.side{font-family:var(--mono);font-size:12.5px;color:var(--muted);padding-top:3px;font-variant-numeric:tabular-nums}
+.stack{display:grid;gap:28px}
+.sub{color:var(--muted);font-size:14px;margin-top:2px}
+ul{margin:10px 0 0;padding-left:17px}
+li{margin:4px 0}
+li::marker{color:var(--faint)}
+
+/* 프로젝트 */
+.proj{display:grid;gap:34px}
+.kind{font-size:12px;font-weight:500;color:var(--accent);background:var(--accent-soft);padding:2px 9px;border-radius:2px;justify-self:start;font-family:var(--sans);height:fit-content}
+dl{display:grid;grid-template-columns:56px minmax(0,1fr);gap:5px 14px;margin:12px 0 0}
+dt{font-size:12.5px;color:var(--faint);padding-top:2px}
+dd{margin:0}
+.load{display:inline-flex;flex-wrap:wrap;gap:4px;margin:4px 0 2px;vertical-align:middle}
+.load span{font-family:var(--mono);font-size:12px;border:1px solid var(--line);border-radius:2px;padding:0 7px;font-variant-numeric:tabular-nums}
+
+/* 자격, 학력 */
+.cols{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:36px}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+td{padding:7px 0;border-bottom:1px solid var(--line);vertical-align:top}
+td.d{text-align:right;font-family:var(--mono);font-size:12.5px;color:var(--muted);white-space:nowrap;padding-left:14px;font-variant-numeric:tabular-nums}
+.note{font-size:13.5px;color:var(--muted);margin-top:10px}
+.text{max-width:64ch}
+footer{margin-top:48px;padding-top:14px;border-top:1px solid var(--line);font-size:12px;color:var(--faint);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+a{color:var(--accent)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+@media (max-width:640px){
+  .paper{padding:30px 20px}
+  .head{grid-template-columns:88px minmax(0,1fr);gap:18px}
+  .photo{width:88px}
+  h1{font-size:25px}
+  .plate{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .plate div:nth-child(3){border-left:0}
+  .plate div:nth-child(n+3){border-top:1px solid var(--line)}
+  .row{grid-template-columns:minmax(0,1fr)}
+  .cols{grid-template-columns:minmax(0,1fr)}
+}
+@media print{
+  @page{size:A4;margin:13mm 14mm}
+  :root{--bg:#fff;--paper:#fff;--ink:#1b2126;--muted:#56616a;--faint:#7d878f;--line:#d9dee2;--accent:#245c70;--accent-soft:#e8f0f3}
+  body{background:#fff;padding:0;font-size:10.2pt;line-height:1.62}
+  .paper{border:0;padding:0;max-width:none}
+  h1{font-size:21pt}
+  section{margin-top:22px}
+  h2{margin-bottom:12px;padding-bottom:6px}
+  .proj{gap:15px}.stack{gap:14px}
+  .row,.proj>div{break-inside:avoid}
+  footer{margin-top:22px}
+  h2{break-after:avoid}
+  .projects{break-before:page;margin-top:0}
+  .cols{break-before:page;margin-top:0;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<main class="paper">
+
+  <header class="head">
+    <img class="photo" src="photo.jpg" alt="조준원 증명사진" width="120" height="160">
+    <div>
+      <h1>조준원</h1>
+      <p class="role">데이터센터 설비 운영 엔지니어, 기계와 자동제어</p>
+      <p class="lead">9년 동안 대형 R&amp;D 캠퍼스와 하이퍼스케일 데이터센터의 기계, 자동제어 설비를 운영했습니다. 지금은 카카오 데이터센터 안산에서 D2C 수냉식 서버룸과 프리쿨링 냉방 설비를 맡고 있고, 휴일과 야간에는 당직 조장으로 현장을 책임집니다.</p>
+      <p class="contact">
+        <span><b>전화</b>010-4900-8196</span>
+        <span><b>메일</b>plan8196@naver.com</span>
+      </p>
+    </div>
+  </header>
+
+  <div class="plate" aria-label="요약">
+    <div><small>설비 운영 경력</small><strong>9년</strong></div>
+    <div><small>현재 현장</small><strong>약 1만 4천 평</strong></div>
+    <div><small>이전 현장</small><strong>약 10만 평</strong></div>
+    <div><small>기계설비유지관리자</small><strong>고급, 선임 가능</strong></div>
+  </div>
+
+  <section>
+    <h2>경력</h2>
+    <div class="stack">
+      <div class="row">
+        <p class="side">2024.03 ~ 현재</p>
+        <div>
+          <h3>에스앤아이코퍼레이션 선임</h3>
+          <p class="sub">카카오 데이터센터 안산, 연면적 약 1만 4천 평, 랙 4,000개 규모</p>
+          <ul>
+            <li>준공 직후 투입, 기계와 자동제어 인프라 운영 담당</li>
+            <li>D2C 수냉식 서버룸 구축(기계, 자동제어 부문)과 운영 기준 수립</li>
+            <li>As-built 도면과 현장 세팅값 대조, SOP/EOP 개정, 장비 이력카드 정리</li>
+            <li>DCIM, BEMS 데이터로 냉방 부하 조정과 PUE 관리</li>
+            <li>프리쿨링 냉동기, CRAH, FWU 운영과 정기 점검</li>
+            <li>휴일 및 야간 당직 조장으로 전 공종 알람 초동 대응</li>
+            <li>과기정통부 통신재난관리 의무대상 수검(UPS, 배터리, 소방)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <p class="side">2017.10 ~ 2024.02</p>
+        <div>
+          <h3>에스원 주임</h3>
+          <p class="sub">삼성전자 서울R&amp;D캠퍼스, 연면적 약 10만 평, 6개 동</p>
+          <ul>
+            <li>신규 사업장 오픈 초기부터 기계설비 운영 기준 수립</li>
+            <li>열원 설비 30여 종과 공조기 145대 자동제어(BAS) 운영</li>
+            <li>유지보수 공사 입찰, 준공검사, 정산</li>
+            <li>기계 파트 야간 당직 조장</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects">
+    <h2>주요 프로젝트</h2>
+    <div class="proj">
+
+      <div class="row">
+        <span class="kind">수냉식</span>
+        <div>
+          <h3>D2C 수냉식 서버룸 구축과 운영</h3>
+          <dl>
+            <dt>상황</dt><dd>운영 중인 센터에 D2C 수냉식 서버룸을 새로 들였습니다.</dd>
+            <dt>한 일</dt><dd>기계와 자동제어 부문을 맡아 설치 공사 감독과 검수, 자동제어 연동, 시운전과 커미셔닝에 참여했습니다. 이 과정에서 커미셔닝 업체와 장비 납품 업체를 관리했습니다.</dd>
+            <dt>결과</dt><dd>수냉식 설비 운영 기준을 수립하고, 지금은 운영과 점검을 맡고 있습니다.</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="row">
+        <span class="kind">커미셔닝</span>
+        <div>
+          <h3>GPU 신규 상면 커미셔닝</h3>
+          <dl>
+            <dt>상황</dt><dd>공랭 기준으로 설계된 상면에 GPU 서버가 들어왔습니다.</dd>
+            <dt>한 일</dt><dd>로드뱅크로 부하를 단계별로 올리며 말단 상면 온도를 확인했습니다.<br><span class="load"><span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span></span><br>핫스팟이 생긴 구간은 FWU 팬 PID를 다시 맞췄습니다.</dd>
+            <dt>결과</dt><dd>모든 단계에서 말단 상면 28℃ 이내</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="row">
+        <span class="kind">커미셔닝</span>
+        <div>
+          <h3>프리쿨링 냉동기 교체 커미셔닝</h3>
+          <dl>
+            <dt>상황</dt><dd>운영 중인 센터에서 냉동기 한 대를 신품으로 교체했습니다.</dd>
+            <dt>한 일</dt><dd>부하 단계별로 성능을 검증하고, 벤더와 함께 기존 냉동기와의 병렬 운전을 맞췄습니다.</dd>
+            <dt>결과</dt><dd>전 부하 구간 냉수 ΔT 5℃ 이상</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="row">
+        <span class="kind">하자 관리</span>
+        <div>
+          <h3>냉동기 열교환기 하자 입증</h3>
+          <dl>
+            <dt>상황</dt><dd>시공사는 준공 시운전 때 정상이었다며 하자가 아니라고 했습니다.</dd>
+            <dt>한 일</dt><dd>같은 부하에서 다른 호기와 냉수 ΔT, 열교환기 차압을 실측해 비교 자료를 만들고 분해 점검을 요청했습니다.</dd>
+            <dt>결과</dt><dd>손상을 확인하고 하자로 처리</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="row">
+        <span class="kind">당직</span>
+        <div>
+          <h3>야간 UPS 라인 셧다운 복구</h3>
+          <dl>
+            <dt>상황</dt><dd>UPS 자동 배터리 테스트 중 외부 순간정전이 겹치면서 바이패스 절체가 실패해 한 라인이 셧다운됐습니다.</dd>
+            <dt>한 일</dt><dd>당직 조장으로 조원을 나눠 배치하고 복구를 지휘했습니다.</dd>
+            <dt>결과</dt><dd>복구 절차를 장애 시나리오 훈련에 추가</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="row">
+        <span class="kind">자동제어</span>
+        <div>
+          <h3>R&amp;D 캠퍼스 오픈 초기 운영 기준 수립</h3>
+          <dl>
+            <dt>한 일</dt><dd>냉동기, 보일러 등 열원 설비 30여 종의 운전 기준을 정리하고, 삼성SDS 자동제어 시스템으로 공조기 145대를 운영했습니다.</dd>
+            <dt>개선</dt><dd>엔탈피 기반 공조 로직과 동절기 스팀 밸브 PID, 외기 보상 스케줄을 조정해 에너지 비용을 줄였습니다.</dd>
+            <dt>제도</dt><dd>기계설비 성능점검 제도를 현장에 구축하고 구청 인허가를 진행했습니다.</dd>
+          </dl>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="cols">
+    <div>
+      <h2>자격</h2>
+      <table>
+        <tr><td>기계설비유지관리자 고급</td><td class="d">2023.12</td></tr>
+        <tr><td>정보통신기술자 중급</td><td class="d">2026.10</td></tr>
+        <tr><td>건축설비기사</td><td class="d">2024.12</td></tr>
+        <tr><td>산업안전기사</td><td class="d">2024.12</td></tr>
+        <tr><td>기계설계산업기사</td><td class="d">2019.11</td></tr>
+        <tr><td>전기기사 필기 합격</td><td class="d">2026.05</td></tr>
+      </table>
+    </div>
+    <div>
+      <h2>학력</h2>
+      <table>
+        <tr><td>한국폴리텍I대학 전기공학 학사</td><td class="d">2021.02</td></tr>
+        <tr><td>동아방송예술대학교 방송기술 전문학사</td><td class="d">2016.02</td></tr>
+      </table>
+      <p class="note">전기공학 학사는 일하면서 마쳤습니다.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>공부하는 방식</h2>
+    <p class="text">Schneider, Vertiv, OCP, ASHRAE 백서를 AI로 정리해서, 데이터센터를 짓는 순서대로 노트와 예상 질문을 만들어 공부합니다. 액체냉각처럼 빠르게 바뀌는 냉각 기술을 이렇게 따라가고 있고, 현장에서 반복되는 정리 작업은 직접 만든 간단한 도구로 줄이고 있습니다.</p>
+  </section>
+
+  <section>
+    <h2>근무지</h2>
+    <p class="text">본가가 포항이라 가족과 함께 포항으로 이주할 계획입니다. 현장 상주와 비상 출동이 가능합니다.</p>
+  </section>
+
+  <footer><span>조준원</span><span>2026년 11월 기준</span></footer>
+</main>
+</body>
+</html>
