@@ -104,7 +104,8 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
   footer{margin-top:12px;padding-top:8px}
   .fit-t td{padding:5px 0}
   h2{break-after:avoid}
-  .projects{break-before:page;margin-top:0}
+  .stack .row{break-inside:auto}
+  tr{break-inside:avoid}
   .fit{break-inside:avoid}
   .cols{break-inside:avoid}
 }
@@ -128,7 +129,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
     <div>
       <h1>조준원</h1>
       <p class="role">데이터센터 설비 운영 엔지니어, 기계와 자동제어</p>
-      <p class="lead">9년 동안 대형 R&amp;D 캠퍼스와 하이퍼스케일 데이터센터의 기계, 자동제어 설비를 운영했습니다. 지금은 카카오 데이터센터 안산에서 D2C 수냉식 서버룸과 프리쿨링 냉방 설비를 맡고 있고, 휴일과 야간에는 당직 조장으로 현장을 책임집니다.</p>
+      <p class="lead">9년 동안 대형 R&amp;D 캠퍼스와 하이퍼스케일 데이터센터의 기계, 자동제어 설비를 운영했습니다. 지금은 카카오 데이터센터 안산에서 D2C 수냉식 서버룸과 프리쿨링 냉동기 500RT 16대, CRAH, FWU 냉방 설비를 운영하며, 기계·자동제어 장애 대응을 담당하고 있습니다.</p>
       <p class="contact">
         <span><b>전화</b>010-4900-8196</span>
         <span><b>메일</b>plan8196@naver.com</span>
@@ -152,18 +153,16 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
           <h3>에스앤아이코퍼레이션 선임</h3>
           <p class="sub">카카오 데이터센터 안산, 40MW급, 연면적 약 1만 4천 평, 랙 4,000개 규모</p>
           <ul>
-            <li>오픈 초기 투입, 기계와 자동제어 인프라 운영 담당</li>
-            <li>기계설비유지관리자(고급)로 현장 선임</li>
+            <li>준공 직후 투입, 기계·자동제어·통신 인프라 운영 담당, 기계설비유지관리자(고급) 현장 선임</li>
             <li>D2C 수냉식 서버룸 구축(기계, 자동제어 부문)과 운영 기준 수립</li>
-            <li>As-built 도면과 현장 세팅값 대조, SOP/EOP 개정, 장비 이력카드 정리</li>
-            <li>DCIM, BEMS 데이터로 냉방 부하 조정과 PUE 관리</li>
-            <li>프리쿨링 냉동기, CRAH, FWU 운영과 정기 점검</li>
-            <li>입주 서버 랙 전력 관리와 전원 요청 대응</li>
-            <li>컨테인먼트 쿨존 온도 관리</li>
-            <li>휴일 및 야간 당직 조장으로 전 공종 알람 초동 대응</li>
-            <li>정보통신 유지관리자 업무 수행: MMR실, IDF실, TPS실과 통신 장비 관리</li>
-            <li>DCIM 포인트, 알람 리스트, 스케줄, 운영 기준 관리</li>
-            <li>과기정통부 통신재난관리 의무대상 수검(UPS, 배터리, 소방)</li>
+            <li>프리쿨링 냉동기(500RT 16대), CRAH, FWU 운영과 정기 점검, UPS·비상발전기 일상 점검</li>
+            <li>As-built 도면(CAD)과 현장 세팅값 대조로 시공 리스크 선별</li>
+            <li>기계·통신·소방 SOP/EOP/MOP 제정과 개정(공종별 분담), 장비 이력카드 DB화</li>
+            <li>DCIM, BEMS 데이터로 냉방 부하 조정과 PUE 관리, DCIM 포인트·알람 리스트·스케줄 관리</li>
+            <li>입주 서버 랙 전력 관리와 전원 요청 대응, 컨테인먼트 쿨존 온도 관리</li>
+            <li>기계·자동제어 장애 대응 담당: 크리티컬 알람 초동 대응, 원인 분석 결과를 SOP/EOP 개정에 반영</li>
+            <li>정보통신 유지관리자 업무: MMR실, IDF실, TPS실과 통신 장비 관리</li>
+            <li>과기정통부 통신재난관리 의무대상 수검(UPS, 배터리, 소방), 통신·기계설비 법정 점검</li>
           </ul>
         </div>
       </div>
@@ -174,10 +173,11 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
           <p class="sub">삼성전자 서울R&amp;D캠퍼스, 연면적 약 10만 평, 6개 동</p>
           <ul>
             <li>신규 사업장 오픈 초기부터 기계설비 운영 기준 수립</li>
-            <li>열원 설비 30여 종과 공조기 145대 자동제어(BAS) 운영</li>
+            <li>흡수식·터보 냉동기, 노통연관·관류 보일러 등 열원 설비 30여 종과 공조기 145대 자동제어(BAS) 운영</li>
             <li>유지보수 공사 입찰, 준공검사, 정산</li>
             <li>기계설비 성능점검 제도 구축과 구청 인허가</li>
-            <li>기계 파트 야간 당직 조장</li>
+            <li>기계·자동제어 장애 대응 담당: 정전, 냉방 장애 초기 대응, 정전작업 때 사내 서버룸 공조·전력 집중 관리</li>
+            <li>Pro-3M 위험성평가, MSDS, 대기·수질 법정 서류 관리</li>
             <li>사내 안전품질 경연대회 최우수(사업장부문), 위험관리 안전 영상 기획과 제작</li>
           </ul>
         </div>
@@ -238,13 +238,13 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
       </div>
 
       <div class="row">
-        <span class="kind">당직</span>
+        <span class="kind">장애 대응</span>
         <div>
-          <h3>야간 UPS 라인 셧다운 복구</h3>
+          <h3>UPS 라인 셧다운 복구와 재발 방지</h3>
           <dl>
             <dt>상황</dt><dd>UPS 자동 배터리 테스트 중 외부 순간정전이 겹치면서 바이패스 절체가 실패해 한 라인이 셧다운됐습니다.</dd>
-            <dt>한 일</dt><dd>당직 조장으로 조원을 나눠 배치하고 복구를 지휘했습니다.</dd>
-            <dt>결과</dt><dd>복구 절차를 장애 시나리오 훈련에 추가</dd>
+            <dt>한 일</dt><dd>장애 대응 담당으로 조원을 나눠 현장에 배치하고 복구를 진행했습니다. 복구 뒤 절체 실패 원인을 정리했습니다.</dd>
+            <dt>결과</dt><dd>복구 절차를 장애 시나리오 훈련과 SOP/EOP에 반영</dd>
           </dl>
         </div>
       </div>
@@ -255,7 +255,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
           <h3>신축 센터 운영 기준 정비</h3>
           <dl>
             <dt>상황</dt><dd>오픈 초기라 도면과 현장 설정이 다른 곳이 있었고, 절차서도 작성자마다 형식이 달랐습니다.</dd>
-            <dt>한 일</dt><dd>As-built 도면과 현장 세팅값을 대조해 시공 리스크를 골라냈습니다. 맡은 공종의 SOP/EOP를 고치고, 장비 이력카드를 정리했습니다.</dd>
+            <dt>한 일</dt><dd>As-built 도면(CAD)과 현장 세팅값을 대조해 시공 리스크를 골라냈습니다. 기계·통신·소방 SOP/EOP/MOP를 공종별로 나눠 새로 만들고 고쳤으며, 장비 이력카드를 DB로 정리했습니다.</dd>
             <dt>결과</dt><dd>근무자가 같은 기준으로 점검하고 대응하는 체계</dd>
           </dl>
         </div>
@@ -323,12 +323,15 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
   <section class="fit">
     <h2>포항 데이터센터 운영 업무와 제 경험</h2>
     <table class="fit-t">
-      <tr><td>전력, 냉방 설비 운영과 정기 점검</td><td>프리쿨링 냉동기, CRAH, FWU 운영과 점검, UPS와 발전기 일상 점검</td></tr>
+      <tr><td>포항 현장 상주, 비상 시 현장 대응</td><td>포항 출신, 가족과 이주 예정, 상주와 비상 출동 가능</td></tr>
+      <tr><td>전력, 냉방 설비 운영과 정기 점검</td><td>프리쿨링 냉동기 500RT 16대, CRAH, FWU, D2C 수냉식 설비 운영과 점검, UPS와 비상발전기 일상 점검</td></tr>
       <tr><td>기계설비 자동제어(DCIM, FMS) 운영</td><td>삼성SDS 자동제어(BAS) 6년, 카카오 안산 DCIM 포인트, 알람 리스트, 스케줄, 운영 기준 관리</td></tr>
-      <tr><td>장애 초동 대응과 재발 방지</td><td>휴일과 야간 당직 조장, UPS 라인 셧다운 복구 후 훈련 반영</td></tr>
+      <tr><td>장애 초동 대응과 재발 방지</td><td>기계·자동제어 장애 대응 담당, UPS 라인 셧다운 복구 후 원인 분석과 SOP/EOP·훈련 반영</td></tr>
       <tr><td>상면, 전력 용량 관리와 PUE 개선</td><td>입주 랙 전력 관리와 전원 대응, 컨테인먼트 쿨존 관리, GPU 신규 상면 커미셔닝, PUE 관리</td></tr>
       <tr><td>협력사 관리, 공사 발주와 정산</td><td>입찰부터 ERP 정산까지 직접 처리, D2C 구축 때 커미셔닝 업체와 납품 업체 관리</td></tr>
-      <tr><td>인증심사 대응</td><td>통신재난관리 의무대상 수검, 기계설비 성능점검 인허가</td></tr>
+      <tr><td>안전 관리</td><td>산업안전기사, Pro-3M 위험성평가와 MSDS 관리, 사내 안전품질 경연대회 최우수</td></tr>
+      <tr><td>AutoCAD 도면 활용과 해석</td><td>냉각·배관 계통도 해석, As-built 도면과 현장 대조</td></tr>
+      <tr><td>인증심사 대응</td><td>통신재난관리 의무대상 수검, 통신·기계설비 법정 점검, 기계설비 성능점검 인허가</td></tr>
       <tr><td>신축 초기 운영, 프리쿨링과 액체냉각</td><td>카카오 안산 오픈 초기 투입, D2C 수냉식 서버룸 구축과 운영</td></tr>
     </table>
   </section>
