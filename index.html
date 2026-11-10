@@ -462,9 +462,14 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 })();
 </script>
 <script>
-/* 방문 기록 (본인 확인용) — ?me 로 한 번 열면 그 브라우저는 기록 안 함 · ?notme 로 다시 기록 */
+/* 방문 기록 (본인 확인용) — ?me 로 한 번 열면 그 브라우저는 기록 안 함 · ?notme 로 다시 기록
+   기본 = workers.dev · 회사망이 막거나 5초 안에 답이 없으면 Supabase 로 바로 (예비 길) · ?pvtest=sb 로 예비 길 시험 */
 (function(){
-  var U='https://gichul-ai.amirbatikunari.workers.dev/pv', q=location.search, ls=null, vid, id=null, shown=0, since=Date.now(), mx=0, done={};
+  var U='https://gichul-ai.amirbatikunari.workers.dev/pv',
+      SB='https://nfyyctinvlytykucbgzk.supabase.co/rest/v1/rpc/gv_pf_log_sb',
+      K='sb_publishable_tRyg8GTus9I2_wt-VSmaRA_6gbU-lt5',
+      q=location.search, ls=null, vid, id=null, shown=0, since=Date.now(), mx=0, done={},
+      mode=/[?&]pvtest=sb\b/.test(q)?'sb':'w';
   try{ ls=window.localStorage; }catch(e){}
   try{
     if(/[?&]notme\b/.test(q)) ls.removeItem('pf_me'); else if(/[?&]me\b/.test(q)) ls.setItem('pf_me','1');
@@ -473,12 +478,27 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
   }catch(e){ vid=vid||'t'+Math.random().toString(36).slice(2); }
   if(navigator.webdriver) return;
   var m=q.match(/[?&](?:from|src|c)=([^&#]+)/), src=m?decodeURIComponent(m[1].replace(/\+/g,' ')).slice(0,60):'';
-  function post(o,beacon){ o.vid=vid; var s=JSON.stringify(o);
+  function j(r){ return r&&r.ok?r.json().catch(function(){return null}):null; }
+  function post(o,beacon,via){ o.vid=vid; via=via||mode;
+    if(via==='sb') return fetch(SB,{method:'POST',headers:{apikey:K,'content-type':'application/json'},body:JSON.stringify({p:o}),keepalive:true,mode:'cors'}).then(j).catch(function(){return null});
+    var s=JSON.stringify(o);
     try{ if(beacon&&navigator.sendBeacon) return navigator.sendBeacon(U,s); }catch(e){}
-    return fetch(U,{method:'POST',body:s,keepalive:true,mode:'cors'}).then(function(r){return r.json()}).catch(function(){}); }
+    return fetch(U,{method:'POST',body:s,keepalive:true,mode:'cors'}).then(j).catch(function(){return null}); }
   var tz=''; try{ tz=Intl.DateTimeFormat().resolvedOptions().timeZone||''; }catch(e){}
-  var p=post({k:'hit',path:location.pathname,ref:document.referrer||'',src:src,lang:navigator.language||'',scr:screen.width+'x'+screen.height,tz:tz});
-  if(p&&p.then) p.then(function(r){ if(r&&r.id) id=r.id; });
+  var H={k:'hit',path:location.pathname,ref:document.referrer||'',src:src,lang:navigator.language||'',scr:screen.width+'x'+screen.height,tz:tz};
+  var settled=false, timer=null;
+  function viaSb(){ if(settled) return; settled=true; clearTimeout(timer); mode='sb';
+    post(H,false,'sb').then(function(r){ if(r&&r.id) id=r.id; }); }
+  if(mode==='sb') viaSb();
+  else {
+    timer=setTimeout(viaSb,5000);
+    post(H,false,'w').then(function(r){
+      if(settled) return;
+      if(r&&r.id){ settled=true; clearTimeout(timer); id=r.id; }
+      else if(r&&r.skip){ settled=true; clearTimeout(timer); }
+      else viaSb();
+    });
+  }
   function sec(){ return Math.round((shown+(document.hidden?0:Date.now()-since))/1000); }
   function sc(){ var h=document.documentElement, t=(window.scrollY||h.scrollTop)+window.innerHeight; mx=Math.max(mx,Math.min(100,Math.round(t/Math.max(1,h.scrollHeight)*100))); }
   window.addEventListener('scroll',sc,{passive:true}); sc();
